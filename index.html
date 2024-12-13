@@ -21,14 +21,21 @@
         document.getElementById("orderForm").addEventListener("submit", function(event) {
             event.preventDefault(); // למנוע רענון של הדף
 
-            const productName = document.getElementById("productName").value;
-            const quantity = document.getElementById("quantity").value;
+            const productName = document.getElementById("productName").value.trim();
+            const quantity = document.getElementById("quantity").value.trim();
 
-            const sellerPhone = "972502727376"; // הכנס כאן את מספר הטלפון של המוכר בפורמט בינלאומי
+            // בדיקה אם השדות ריקים
+            if (!productName || !quantity) {
+                alert("יש למלא את כל השדות.");
+                return;
+            }
+
+            const sellerPhone = "972541234567"; // הכנס כאן את מספר הטלפון של המוכר
             const message = `התקבלה הזמנה חדשה!\nמוצר: ${productName}\nכמות: ${quantity}`;
 
             // פתיחת ווצאפ עם ההודעה
-            window.open(`https://wa.me/${sellerPhone}?text=${encodeURIComponent(message)}`, "_blank");
+            const whatsappURL = `https://wa.me/${sellerPhone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, "_blank");
         });
     </script>
 </body>
