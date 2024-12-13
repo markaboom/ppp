@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הזמנה</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            direction: rtl;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        input {
+            padding: 10px;
+            font-size: 18px;
+            width: 80%;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Tomatos</h1>
+        <img src="assets/icon-192x192.png" alt="תמונה של המוצר">
+        <h2>בחר אפשרות להזמנה:</h2>
+        <button onclick="chooseOption('5 = 300')">5 = 300</button>
+        <button onclick="chooseOption('10 = 500')">10 = 500</button>
+        <button onclick="chooseOption('20 = 950')">20 = 950</button>
+        <br>
+        <h3>או הזן סכום אחר:</h3>
+        <input type="number" id="customAmount" placeholder="סכום אחר">
+        <br>
+        <button onclick="submitOrder()">שלח הזמנה</button>
+    </div>
+
+    <script>
+        function chooseOption(option) {
+            alert("הזמנת " + option + " התקבלה!");
+            sendOrder(option);
+        }
+
+        function submitOrder() {
+            const customAmount = document.getElementById("customAmount").value;
+            if (customAmount) {
+                alert("הזמנת סכום " + customAmount + " התקבלה!");
+                sendOrder(customAmount);
+            } else {
+                alert("לא הוזן סכום, נא להזין סכום כדי להמשיך.");
+            }
+        }
+
+        function sendOrder(orderDetails) {
+            // כאן תוכל להוסיף קוד לשלוח הודעה למוכר
+            console.log("ההזמנה נשלחה: " + orderDetails);
+        }
+    </script>
+
+</body>
+</html>
